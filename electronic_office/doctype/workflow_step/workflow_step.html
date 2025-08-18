@@ -1,0 +1,183 @@
+<div class="workflow-step-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="step_name">{{ _("Step Name") }}</label>
+                <input type="text" class="form-control" id="step_name" name="step_name" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="step_type">{{ _("Step Type") }}</label>
+                <select class="form-control" id="step_type" name="step_type" required>
+                    <option value="Start">{{ _("Start") }}</option>
+                    <option value="Approval">{{ _("Approval") }}</option>
+                    <option value="Review">{{ _("Review") }}</option>
+                    <option value="Notification">{{ _("Notification") }}</option>
+                    <option value="End">{{ _("End") }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="description">{{ _("Description") }}</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="step_order">{{ _("Step Order") }}</label>
+                <input type="number" class="form-control" id="step_order" name="step_order" min="1" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="assignee_type">{{ _("Assignee Type") }}</label>
+                <select class="form-control" id="assignee_type" name="assignee_type">
+                    <option value="None">{{ _("None") }}</option>
+                    <option value="Role">{{ _("Role") }}</option>
+                    <option value="User">{{ _("User") }}</option>
+                    <option value="Field-based">{{ _("Field-based") }}</option>
+                    <option value="Dynamic">{{ _("Dynamic") }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="assignee_value">{{ _("Assignee Value") }}</label>
+                <input type="text" class="form-control" id="assignee_value" name="assignee_value">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="timeout_days">{{ _("Timeout Days") }}</label>
+                <input type="number" class="form-control" id="timeout_days" name="timeout_days" min="0">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="escalation_days">{{ _("Escalation Days") }}</label>
+                <input type="number" class="form-control" id="escalation_days" name="escalation_days" min="0">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_on_timeout" name="notify_on_timeout" checked>
+                        {{ _("Notify on Timeout") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_on_escalation" name="notify_on_escalation" checked>
+                        {{ _("Notify on Escalation") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="custom_script">{{ _("Custom Script") }}</label>
+                <textarea class="form-control" id="custom_script" name="custom_script" rows="5" placeholder="{{ _('For dynamic assignee calculation') }}"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Actions") }}</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="actions-table">
+                <thead>
+                    <tr>
+                        <th>{{ _("Action Name") }}</th>
+                        <th>{{ _("Action Type") }}</th>
+                        <th>{{ _("Next Step") }}</th>
+                        <th>{{ _("Role") }}</th>
+                        <th>{{ _("Conditions") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Actions will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-sm btn-default" id="add-action">{{ _("Add Action") }}</button>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Conditions") }}</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="conditions-table">
+                <thead>
+                    <tr>
+                        <th>{{ _("Condition Name") }}</th>
+                        <th>{{ _("Condition Type") }}</th>
+                        <th>{{ _("Field Name") }}</th>
+                        <th>{{ _("Operator") }}</th>
+                        <th>{{ _("Value") }}</th>
+                        <th>{{ _("Logical Operator") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Conditions will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-sm btn-default" id="add-condition">{{ _("Add Condition") }}</button>
+    </div>
+</div>
+
+<style>
+.workflow-step-form {
+    padding: 20px;
+}
+
+.section-break {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.section-break h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.table-responsive {
+    margin-bottom: 15px;
+}
+
+#actions-table th, #conditions-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.btn-sm {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    margin-top: 10px;
+}
+</style>

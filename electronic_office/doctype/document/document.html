@@ -1,0 +1,128 @@
+<div class="form-layout">
+    <div class="form-page">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="title" class="control-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="document_type" class="control-label">Document Type</label>
+                    <input type="text" class="form-control" id="document_type" name="document_type" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="document_number" class="control-label">Document Number</label>
+                    <input type="text" class="form-control" id="document_number" name="document_number" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="document_date" class="control-label">Document Date</label>
+                    <input type="date" class="form-control" id="document_date" name="document_date">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="status" class="control-label">Status</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="Draft">Draft</option>
+                        <option value="In Review">In Review</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Published">Published</option>
+                        <option value="Archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="security_level" class="control-label">Security Level</label>
+                    <select class="form-control" id="security_level" name="security_level">
+                        <option value="Public">Public</option>
+                        <option value="Internal">Internal</option>
+                        <option value="Confidential">Confidential</option>
+                        <option value="Secret">Secret</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="expiry_date" class="control-label">Expiry Date</label>
+                    <input type="date" class="form-control" id="expiry_date" name="expiry_date">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="confidentiality_flag" name="confidentiality_flag">
+                            Confidentiality Flag
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="owner" class="control-label">Owner</label>
+                    <input type="text" class="form-control" id="owner" name="owner">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="creation_date" class="control-label">Creation Date</label>
+                    <input type="datetime" class="form-control" id="creation_date" name="creation_date">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="last_modified" class="control-label">Last Modified</label>
+                    <input type="datetime" class="form-control" id="last_modified" name="last_modified">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="attachments" class="control-label">Attachments</label>
+                    <input type="file" class="form-control" id="attachments" name="attachments">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="content" class="control-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="description" class="control-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="tags" class="control-label">Tags</label>
+            <input type="text" class="form-control" id="tags" name="tags">
+        </div>
+        
+        <div class="form-group">
+            <label for="related_documents" class="control-label">Related Documents</label>
+            <input type="text" class="form-control" id="related_documents" name="related_documents">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+	"app_name": "electronic_office",
+	"app_title": "Electronic Office System",
+	"app_version": "0.0.1",
+	"app_description": "Electronic Office System for government agencies",
+	"app_author": "Government Agency",
+	"app_email": "info@government.gov",
+	"app_license": "GPL-3.0",
+	"app_color": "grey",
+	"app_publisher": "Government Agency",
+	"app_icon": "octicon octicon-file-directory",
+	"app_dependencies": ["frappe"],
+	"app_on_install": "electronic_office.install.after_install",
+	"app_after_install": "electronic_office.install.after_install",
+	"app_before_uninstall": "electronic_office.uninstall.before_uninstall",
+	"app_after_uninstall": "electronic_office.uninstall.after_uninstall",
+	"app_include_js": [],
+	"app_include_css": [],
+	"app_html_include": [],
+	"app_include_less": [],
+	"app_include_scss": []
+}

@@ -1,0 +1,281 @@
+<div class="workflow-definition-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="workflow_name">{{ _("Workflow Name") }}</label>
+                <input type="text" class="form-control" id="workflow_name" name="workflow_name" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="document_type">{{ _("Document Type") }}</label>
+                <input type="link" class="form-control" id="document_type" name="document_type" options="Document Type" required>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="description">{{ _("Description") }}</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="status">{{ _("Status") }}</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="Draft">{{ _("Draft") }}</option>
+                    <option value="Active">{{ _("Active") }}</option>
+                    <option value="Inactive">{{ _("Inactive") }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="is_default" name="is_default">
+                        {{ _("Is Default") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="allow_parallel_steps" name="allow_parallel_steps">
+                        {{ _("Allow Parallel Steps") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="auto_start_on_creation" name="auto_start_on_creation">
+                        {{ _("Auto Start on Document Creation") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="timeout_days">{{ _("Timeout Days") }}</label>
+                <input type="number" class="form-control" id="timeout_days" name="timeout_days" min="0">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="escalation_days">{{ _("Escalation Days") }}</label>
+                <input type="number" class="form-control" id="escalation_days" name="escalation_days" min="0">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_on_timeout" name="notify_on_timeout" checked>
+                        {{ _("Notify on Timeout") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_on_escalation" name="notify_on_escalation" checked>
+                        {{ _("Notify on Escalation") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Workflow Steps") }}</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="steps-table">
+                <thead>
+                    <tr>
+                        <th>{{ _("Step Name") }}</th>
+                        <th>{{ _("Step Type") }}</th>
+                        <th>{{ _("Step Order") }}</th>
+                        <th>{{ _("Assignee Type") }}</th>
+                        <th>{{ _("Assignee Value") }}</th>
+                        <th>{{ _("Actions") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Steps will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-sm btn-default" id="add-step">{{ _("Add Step") }}</button>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Permissions") }}</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="permissions-table">
+                <thead>
+                    <tr>
+                        <th>{{ _("Role") }}</th>
+                        <th>{{ _("Permission Level") }}</th>
+                        <th>{{ _("Create") }}</th>
+                        <th>{{ _("Read") }}</th>
+                        <th>{{ _("Write") }}</th>
+                        <th>{{ _("Delete") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Permissions will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-sm btn-default" id="add-permission">{{ _("Add Permission") }}</button>
+    </div>
+</div>
+
+<style>
+.workflow-definition-form {
+    padding: 20px;
+}
+
+.section-break {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.section-break h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.table-responsive {
+    margin-bottom: 15px;
+}
+
+#steps-table th, #permissions-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.btn-sm {
+    margin-top: 10px;
+}
+
+.workflow-preview {
+    padding: 20px;
+}
+
+.workflow-preview h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.workflow-steps {
+    margin-top: 20px;
+}
+
+.step-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.step {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    min-width: 200px;
+    position: relative;
+}
+
+.step.start {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+.step.approval {
+    border-color: #007bff;
+    background-color: #f8f9ff;
+}
+
+.step.review {
+    border-color: #ffc107;
+    background-color: #fffbf0;
+}
+
+.step.notification {
+    border-color: #17a2b8;
+    background-color: #f0fcff;
+}
+
+.step.end {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #007bff;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.step-content {
+    margin-top: 5px;
+}
+
+.step-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.step-type {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.step-description {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.step-assignee {
+    font-size: 12px;
+    color: #666;
+}
+
+.step-arrow {
+    font-size: 24px;
+    color: #666;
+    margin: 0 5px;
+}
+</style>

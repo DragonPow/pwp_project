@@ -1,0 +1,96 @@
+<div class="workflow-step-condition-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="condition_name">{{ _("Condition Name") }}</label>
+                <input type="text" class="form-control" id="condition_name" name="condition_name" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="condition_type">{{ _("Condition Type") }}</label>
+                <select class="form-control" id="condition_type" name="condition_type" required>
+                    <option value="Field-based">{{ _("Field-based") }}</option>
+                    <option value="Role-based">{{ _("Role-based") }}</option>
+                    <option value="Document-based">{{ _("Document-based") }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="description">{{ _("Description") }}</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="field_name">{{ _("Field Name") }}</label>
+                <input type="text" class="form-control" id="field_name" name="field_name">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="operator">{{ _("Operator") }}</label>
+                <select class="form-control" id="operator" name="operator">
+                    <option value="equals">{{ _("Equals") }}</option>
+                    <option value="not equals">{{ _("Not Equals") }}</option>
+                    <option value="contains">{{ _("Contains") }}</option>
+                    <option value="not contains">{{ _("Not Contains") }}</option>
+                    <option value="greater than">{{ _("Greater Than") }}</option>
+                    <option value="less than">{{ _("Less Than") }}</option>
+                    <option value="greater than or equals">{{ _("Greater Than or Equals") }}</option>
+                    <option value="less than or equals">{{ _("Less Than or Equals") }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="value">{{ _("Value") }}</label>
+                <input type="text" class="form-control" id="value" name="value">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="role">{{ _("Role") }}</label>
+                <input type="link" class="form-control" id="role" name="role" options="Role">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="logical_operator">{{ _("Logical Operator") }}</label>
+                <select class="form-control" id="logical_operator" name="logical_operator">
+                    <option value="AND">{{ _("AND") }}</option>
+                    <option value="OR">{{ _("OR") }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="custom_script">{{ _("Custom Script") }}</label>
+                <textarea class="form-control" id="custom_script" name="custom_script" rows="5" placeholder="{{ _('For complex condition evaluation') }}"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.workflow-step-condition-form {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+</style>

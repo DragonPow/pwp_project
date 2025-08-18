@@ -1,0 +1,305 @@
+<div class="workflow-instance-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="document">{{ _("Document") }}</label>
+                <input type="link" class="form-control" id="document" name="document" options="Document" readonly>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="workflow_definition">{{ _("Workflow Definition") }}</label>
+                <input type="link" class="form-control" id="workflow_definition" name="workflow_definition" options="Workflow Definition" readonly>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="status">{{ _("Status") }}</label>
+                <input type="select" class="form-control" id="status" name="status" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="current_step">{{ _("Current Step") }}</label>
+                <input type="text" class="form-control" id="current_step" name="current_step" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="started_by">{{ _("Started By") }}</label>
+                <input type="link" class="form-control" id="started_by" name="started_by" options="User" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="started_on">{{ _("Started On") }}</label>
+                <input type="datetime" class="form-control" id="started_on" name="started_on" readonly>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="completed_by">{{ _("Completed By") }}</label>
+                <input type="link" class="form-control" id="completed_by" name="completed_by" options="User" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="completed_on">{{ _("Completed On") }}</label>
+                <input type="datetime" class="form-control" id="completed_on" name="completed_on" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="total_duration">{{ _("Total Duration") }}</label>
+                <input type="text" class="form-control" id="total_duration" name="total_duration" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="progress">{{ _("Progress") }}</label>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Workflow Visualization") }}</h4>
+        <div class="workflow-visualization" id="workflow_visualization">
+            <!-- Workflow visualization will be loaded here -->
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Pending Actions") }}</h4>
+        <div class="pending-actions" id="pending_actions">
+            <!-- Pending actions will be loaded here -->
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Steps") }}</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="steps-table">
+                <thead>
+                    <tr>
+                        <th>{{ _("Step Order") }}</th>
+                        <th>{{ _("Step Name") }}</th>
+                        <th>{{ _("Step Type") }}</th>
+                        <th>{{ _("Status") }}</th>
+                        <th>{{ _("Assignee") }}</th>
+                        <th>{{ _("Started On") }}</th>
+                        <th>{{ _("Completed On") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Steps will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Comments") }}</h4>
+        <div class="comments-section" id="comments-section">
+            <!-- Comments will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<style>
+.workflow-instance-form {
+    padding: 20px;
+}
+
+.section-break {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.section-break h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.table-responsive {
+    margin-bottom: 15px;
+}
+
+#steps-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.workflow-visualization {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.workflow-steps {
+    margin-top: 20px;
+}
+
+.step-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.step {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    min-width: 200px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.step.completed {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+.step.current {
+    border-color: #007bff;
+    background-color: #f8f9ff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.step.pending {
+    border-color: #ddd;
+    background-color: #f8f8f8;
+    opacity: 0.7;
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #007bff;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.step.completed .step-number {
+    background: #28a745;
+}
+
+.step.pending .step-number {
+    background: #ddd;
+    color: #666;
+}
+
+.step-content {
+    margin-top: 5px;
+}
+
+.step-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.step-type {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.step-status {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.step.completed .step-status {
+    color: #28a745;
+}
+
+.step.current .step-status {
+    color: #007bff;
+}
+
+.step.pending .step-status {
+    color: #666;
+}
+
+.step-arrow {
+    font-size: 24px;
+    color: #666;
+    margin: 0 5px;
+}
+
+.pending-actions {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.pending-actions .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 25px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    font-weight: bold;
+}
+
+.comments-section {
+    margin-top: 15px;
+}
+
+.history-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.history-body p {
+    margin-bottom: 5px;
+}
+
+.step-list {
+    padding-left: 20px;
+}
+
+.step-list li {
+    margin-bottom: 5px;
+}
+</style>

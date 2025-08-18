@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-15 10:15:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "workflow_name",
+  "description",
+  "document_type",
+  "is_active",
+  "is_default",
+  "allow_parallel_steps",
+  "auto_start_on_creation",
+  "column_break_1",
+  "timeout_days",
+  "escalation_days",
+  "notify_on_timeout",
+  "notify_on_escalation",
+  "steps_section",
+  "steps",
+  "transitions_section",
+  "transitions",
+  "conditions_section",
+  "conditions",
+  "permissions_section",
+  "permissions"
+ ],
+ "fields": [
+  {
+   "fieldname": "workflow_name",
+   "fieldtype": "Data",
+   "label": "Workflow Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "options": "Document Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "default": 1
+  },
+  {
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default",
+   "description": "Set as default workflow for this document type"
+  },
+  {
+   "fieldname": "allow_parallel_steps",
+   "fieldtype": "Check",
+   "label": "Allow Parallel Steps",
+   "default": 0
+  },
+  {
+   "fieldname": "auto_start_on_creation",
+   "fieldtype": "Check",
+   "label": "Auto Start on Document Creation",
+   "default": 0
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timeout_days",
+   "fieldtype": "Int",
+   "label": "Timeout Days",
+   "description": "Number of days before workflow times out"
+  },
+  {
+   "fieldname": "escalation_days",
+   "fieldtype": "Int",
+   "label": "Escalation Days",
+   "description": "Number of days before escalating if step is not completed"
+  },
+  {
+   "fieldname": "notify_on_timeout",
+   "fieldtype": "Check",
+   "label": "Notify on Timeout",
+   "default": 1
+  },
+  {
+   "fieldname": "notify_on_escalation",
+   "fieldtype": "Check",
+   "label": "Notify on Escalation",
+   "default": 1
+  },
+  {
+   "fieldname": "steps_section",
+   "fieldtype": "Section Break",
+   "label": "Workflow Steps"
+  },
+  {
+   "fieldname": "steps",
+   "fieldtype": "Table",
+   "label": "Steps",
+   "options": "Workflow Step",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transitions_section",
+   "fieldtype": "Section Break",
+   "label": "Transitions"
+  },
+  {
+   "fieldname": "transitions",
+   "fieldtype": "Table",
+   "label": "Transitions",
+   "options": "Workflow Transition"
+  },
+  {
+   "fieldname": "conditions_section",
+   "fieldtype": "Section Break",
+   "label": "Conditions"
+  },
+  {
+   "fieldname": "conditions",
+   "fieldtype": "Table",
+   "label": "Conditions",
+   "options": "Workflow Condition"
+  },
+  {
+   "fieldname": "permissions_section",
+   "fieldtype": "Section Break",
+   "label": "Permissions"
+  },
+  {
+   "fieldname": "permissions",
+   "fieldtype": "Table",
+   "label": "Permissions",
+   "options": "Workflow Permission"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-15 10:15:00.000000",
+ "modified_by": "Administrator",
+ "module": "Electronic Office",
+ "name": "Workflow Definition",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "workflow_name"
+}

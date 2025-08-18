@@ -1,0 +1,83 @@
+<div class="form-layout">
+    <div class="form-page">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="document" class="control-label">Document</label>
+                    <input type="text" class="form-control" id="document" name="document" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="version_number" class="control-label">Version Number</label>
+                    <input type="number" class="form-control" id="version_number" name="version_number" required readonly>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="version_date" class="control-label">Version Date</label>
+                    <input type="datetime" class="form-control" id="version_date" name="version_date" readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="status" class="control-label">Status</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="Draft">Draft</option>
+                        <option value="In Review">In Review</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Published">Published</option>
+                        <option value="Archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="created_by" class="control-label">Created By</label>
+                    <input type="text" class="form-control" id="created_by" name="created_by" required readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="created_on" class="control-label">Created On</label>
+                    <input type="datetime" class="form-control" id="created_on" name="created_on" required readonly>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="file_hash" class="control-label">File Hash</label>
+                    <input type="text" class="form-control" id="file_hash" name="file_hash" readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="is_current" name="is_current" readonly>
+                            Is Current
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="version_description" class="control-label">Version Description</label>
+            <textarea class="form-control" id="version_description" name="version_description" rows="5"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="content_snapshot" class="control-label">Content Snapshot</label>
+            <textarea class="form-control" id="content_snapshot" name="content_snapshot" rows="10" readonly></textarea>
+        </div>
+    </div>
+</div>

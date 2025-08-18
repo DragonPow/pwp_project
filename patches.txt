@@ -1,0 +1,3 @@
+# Patches for electronic_office
+# Format:
+# patch_name version description

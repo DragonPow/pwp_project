@@ -1,0 +1,149 @@
+<div class="workflow-step-action-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="action_name">{{ _("Action Name") }}</label>
+                <input type="text" class="form-control" id="action_name" name="action_name" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="action_type">{{ _("Action Type") }}</label>
+                <select class="form-control" id="action_type" name="action_type" required>
+                    <option value="Approval">{{ _("Approval") }}</option>
+                    <option value="Rejection">{{ _("Rejection") }}</option>
+                    <option value="Forward">{{ _("Forward") }}</option>
+                    <option value="Request Changes">{{ _("Request Changes") }}</option>
+                    <option value="Information">{{ _("Information") }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="description">{{ _("Description") }}</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="next_step">{{ _("Next Step") }}</label>
+                <input type="text" class="form-control" id="next_step" name="next_step">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="role">{{ _("Role") }}</label>
+                <input type="link" class="form-control" id="role" name="role" options="Role">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="require_comment" name="require_comment">
+                        {{ _("Require Comment") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="allow_rejection" name="allow_rejection" checked>
+                        {{ _("Allow Rejection") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_assignee" name="notify_assignee" checked>
+                        {{ _("Notify Assignee") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_creator" name="notify_creator">
+                        {{ _("Notify Creator") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-break">
+        <h4>{{ _("Conditions") }}</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="conditions-table">
+                <thead>
+                    <tr>
+                        <th>{{ _("Condition Name") }}</th>
+                        <th>{{ _("Condition Type") }}</th>
+                        <th>{{ _("Field Name") }}</th>
+                        <th>{{ _("Operator") }}</th>
+                        <th>{{ _("Value") }}</th>
+                        <th>{{ _("Logical Operator") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Conditions will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-sm btn-default" id="add-condition">{{ _("Add Condition") }}</button>
+    </div>
+</div>
+
+<style>
+.workflow-step-action-form {
+    padding: 20px;
+}
+
+.section-break {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.section-break h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.table-responsive {
+    margin-bottom: 15px;
+}
+
+#conditions-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.btn-sm {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    margin-top: 10px;
+}
+</style>

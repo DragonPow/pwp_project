@@ -1,0 +1,13 @@
+# Modules for Electronic Office System
+# Format: Module Name
+
+# Core Modules
+Document
+Workflow
+Digital Signature
+Audit
+Notification
+
+# Supporting Modules
+Tag
+Task

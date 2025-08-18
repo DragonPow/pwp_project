@@ -1,0 +1,110 @@
+<div class="workflow-transition-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="from_step">{{ _("From Step") }}</label>
+                <input type="text" class="form-control" id="from_step" name="from_step" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="to_step">{{ _("To Step") }}</label>
+                <input type="text" class="form-control" id="to_step" name="to_step" required>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="transition_condition">{{ _("Transition Condition") }}</label>
+                <input type="text" class="form-control" id="transition_condition" name="transition_condition">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="transition_action">{{ _("Transition Action") }}</label>
+                <input type="text" class="form-control" id="transition_action" name="transition_action">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="auto_transition" name="auto_transition">
+                        {{ _("Auto Transition") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_from_step_assignee" name="notify_from_step_assignee" checked>
+                        {{ _("Notify From Step Assignee") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_to_step_assignee" name="notify_to_step_assignee" checked>
+                        {{ _("Notify To Step Assignee") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_workflow_creator" name="notify_workflow_creator">
+                        {{ _("Notify Workflow Creator") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify_document_owner" name="notify_document_owner">
+                        {{ _("Notify Document Owner") }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="custom_script">{{ _("Custom Script") }}</label>
+                <textarea class="form-control" id="custom_script" name="custom_script" rows="5" placeholder="{{ _('For custom transition logic') }}"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.workflow-transition-form {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    margin-top: 10px;
+}
+</style>

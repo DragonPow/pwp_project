@@ -1,0 +1,111 @@
+<div class="form-layout">
+    <div class="form-page">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="title" class="control-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="document" class="control-label">Document</label>
+                    <input type="text" class="form-control" id="document" name="document">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="status" class="control-label">Status</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="priority" class="control-label">Priority</label>
+                    <select class="form-control" id="priority" name="priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="assigned_to" class="control-label">Assigned To</label>
+                    <input type="text" class="form-control" id="assigned_to" name="assigned_to" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="assigned_by" class="control-label">Assigned By</label>
+                    <input type="text" class="form-control" id="assigned_by" name="assigned_by" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="assigned_on" class="control-label">Assigned On</label>
+                    <input type="datetime" class="form-control" id="assigned_on" name="assigned_on" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="due_date" class="control-label">Due Date</label>
+                    <input type="date" class="form-control" id="due_date" name="due_date">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="completed_on" class="control-label">Completed On</label>
+                    <input type="datetime" class="form-control" id="completed_on" name="completed_on" readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="task_type" class="control-label">Task Type</label>
+                    <select class="form-control" id="task_type" name="task_type">
+                        <option value="Review">Review</option>
+                        <option value="Approval">Approval</option>
+                        <option value="Action">Action</option>
+                        <option value="Information">Information</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="role" class="control-label">Role</label>
+                    <select class="form-control" id="role" name="role">
+                        <option value="Owner">Owner</option>
+                        <option value="Coordinator">Coordinator</option>
+                        <option value="Supervisor">Supervisor</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="description" class="control-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+        </div>
+    </div>
+</div>
