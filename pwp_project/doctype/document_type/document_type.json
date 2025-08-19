@@ -1,0 +1,138 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2025-08-15 10:10:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "document_type_name",
+    "description",
+    "icon",
+    "color",
+    "require_attachment",
+    "allowed_file_types",
+    "max_file_size",
+    "enable_version_control",
+    "auto_archive_days",
+    "reviewers",
+    "approvers",
+    "default_security_level",
+    "is_active"
+  ],
+  "fields": [
+   {
+    "fieldname": "document_type_name",
+    "fieldtype": "Data",
+    "label": "Document Type Name",
+    "reqd": 1,
+    "unique": 1
+   },
+   {
+    "fieldname": "description",
+    "fieldtype": "Text Editor",
+    "label": "Description"
+   },
+   {
+    "fieldname": "icon",
+    "fieldtype": "Data",
+    "label": "Icon"
+   },
+   {
+    "fieldname": "color",
+    "fieldtype": "Color",
+    "label": "Color"
+   },
+   {
+    "fieldname": "require_attachment",
+    "fieldtype": "Check",
+    "label": "Require Attachment",
+    "default": 0
+   },
+   {
+    "fieldname": "allowed_file_types",
+    "fieldtype": "Text",
+    "label": "Allowed File Types",
+    "description": "Comma separated file extensions (e.g., pdf,docx,xlsx)"
+   },
+   {
+    "fieldname": "max_file_size",
+    "fieldtype": "Int",
+    "label": "Max File Size (MB)",
+    "description": "Maximum file size in megabytes"
+   },
+   {
+    "fieldname": "enable_version_control",
+    "fieldtype": "Check",
+    "label": "Enable Version Control",
+    "default": 1
+   },
+   {
+    "fieldname": "auto_archive_days",
+    "fieldtype": "Int",
+    "label": "Auto Archive Days",
+    "description": "Automatically archive documents after this many days"
+   },
+   {
+    "fieldname": "reviewers",
+    "fieldtype": "Table MultiSelect",
+    "label": "Reviewers",
+    "options": "Document Type Reviewer"
+   },
+   {
+    "fieldname": "approvers",
+    "fieldtype": "Table MultiSelect",
+    "label": "Approvers",
+    "options": "Document Type Approver"
+   },
+   {
+    "fieldname": "default_security_level",
+    "fieldtype": "Select",
+    "label": "Default Security Level",
+    "options": "Public\nInternal\nConfidential\nSecret",
+    "default": "Internal"
+   },
+   {
+    "fieldname": "is_active",
+    "fieldtype": "Check",
+    "label": "Is Active",
+    "default": 1
+   }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2025-08-15 10:10:00.000000",
+  "modified_by": "Administrator",
+  "module": "PWP Project",
+  "name": "Document Type",
+  "owner": "Administrator",
+  "permissions": [
+   {
+    "create": 1,
+    "delete": 1,
+    "email": 1,
+    "export": 1,
+    "print": 1,
+    "read": 1,
+    "report": 1,
+    "role": "System Manager",
+    "share": 1,
+    "write": 1
+   },
+   {
+    "create": 0,
+    "delete": 0,
+    "email": 1,
+    "export": 1,
+    "print": 1,
+    "read": 1,
+    "report": 1,
+    "role": "All",
+    "share": 1,
+    "write": 0
+   }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "document_type_name"
+}

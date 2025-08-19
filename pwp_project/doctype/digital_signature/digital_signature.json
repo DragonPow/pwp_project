@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-15 09:56:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "document",
+  "document_version",
+  "signed_by",
+  "signed_on",
+  "signature_data",
+  "signature_provider",
+  "verification_status",
+  "certificate_info"
+ ],
+ "fields": [
+  {
+   "fieldname": "document",
+   "fieldtype": "Link",
+   "label": "Document",
+   "options": "Document",
+   "reqd": 1
+  },
+  {
+   "fieldname": "document_version",
+   "fieldtype": "Link",
+   "label": "Document Version",
+   "options": "Document Version",
+   "reqd": 1
+  },
+  {
+   "fieldname": "signed_by",
+   "fieldtype": "Link",
+   "label": "Signed By",
+   "options": "User",
+   "reqd": 1,
+   "default": "__user"
+  },
+  {
+   "fieldname": "signed_on",
+   "fieldtype": "Datetime",
+   "label": "Signed On",
+   "reqd": 1,
+   "default": "__now"
+  },
+  {
+   "fieldname": "signature_data",
+   "fieldtype": "Long Text",
+   "label": "Signature Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "signature_provider",
+   "fieldtype": "Data",
+   "label": "Signature Provider",
+   "reqd": 1
+  },
+  {
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "label": "Verification Status",
+   "options": "Pending\nVerified\nFailed",
+   "default": "Pending"
+  },
+  {
+   "fieldname": "certificate_info",
+   "fieldtype": "Text",
+   "label": "Certificate Info"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-15 09:56:00.000000",
+ "modified_by": "Administrator",
+ "module": "PWP Project",
+ "name": "Digital Signature",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "signed_by"
+}

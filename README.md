@@ -1,8 +1,8 @@
-# Electronic Office System
+# PWP Project System
 
 ## Overview
 
-The Electronic Office System is a comprehensive digital solution designed specifically for government agencies to modernize their operations and enhance service delivery. Built on the Frappe Framework v14+ with MariaDB 10.6+, this system provides a robust, secure, and scalable platform for managing government workflows, documents, and citizen services.
+The PWP Project System is a comprehensive digital solution designed specifically for government agencies to modernize their operations and enhance service delivery. Built on the Frappe Framework v14+ with MariaDB 10.6+, this system provides a robust, secure, and scalable platform for managing government workflows, documents, and citizen services.
 
 ## Features
 
@@ -26,11 +26,11 @@ The Electronic Office System is a comprehensive digital solution designed specif
 
 ## Installation
 
-To install the Electronic Office System, ensure you have a Frappe bench environment set up. Then run:
+To install the PWP Project System, ensure you have a Frappe bench environment set up. Then run:
 
 ```bash
-bench get-app electronic_office
-bench install-app electronic_office
+bench get-app pwp_project
+bench install-app pwp_project
 ```
 
 ## License

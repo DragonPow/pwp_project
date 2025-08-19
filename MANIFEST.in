@@ -4,7 +4,7 @@ include requirements.txt
 include modules.txt
 include patches.txt
 include config.json
-recursive-include electronic_office *
+recursive-include pwp_project *
 recursive-include api *
 recursive-include public *
 recursive-include templates *

@@ -1,0 +1,389 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="workflow-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ _("Workflow Dashboard") }}</h1>
+                <div class="workflow-stats">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value" id="total-workflows">0</div>
+                                <div class="stat-label">{{ _("Total Workflows") }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value" id="pending-actions">0</div>
+                                <div class="stat-label">{{ _("Pending Actions") }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value" id="in-progress">0</div>
+                                <div class="stat-label">{{ _("In Progress") }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value" id="completed">0</div>
+                                <div class="stat-label">{{ _("Completed") }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ _("My Pending Actions") }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="pending-actions-table">
+                                <thead>
+                                    <tr>
+                                        <th>{{ _("Document") }}</th>
+                                        <th>{{ _("Workflow") }}</th>
+                                        <th>{{ _("Current Step") }}</th>
+                                        <th>{{ _("Actions") }}</th>
+                                        <th>{{ _("Due Date") }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Pending actions will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ _("Quick Actions") }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="#new-workflow" class="list-group-item list-group-item-action" data-toggle="modal">
+                                <i class="fa fa-plus"></i> {{ _("Create New Workflow") }}
+                            </a>
+                            <a href="#workflow-templates" class="list-group-item list-group-item-action">
+                                <i class="fa fa-clone"></i> {{ _("Workflow Templates") }}
+                            </a>
+                            <a href="#workflow-reports" class="list-group-item list-group-item-action">
+                                <i class="fa fa-chart-bar"></i> {{ _("Workflow Reports") }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ _("Recent Activity") }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-feed" id="recent-activity">
+                            <!-- Recent activity will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Workflow Modal -->
+<div class="modal fade" id="new-workflow" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _("Create New Workflow") }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="new-workflow-form">
+                    <div class="form-group">
+                        <label for="workflow-name">{{ _("Workflow Name") }}</label>
+                        <input type="text" class="form-control" id="workflow-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="document-type">{{ _("Document Type") }}</label>
+                        <select class="form-control" id="document-type" required>
+                            <option value="">{{ _("Select Document Type") }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="workflow-description">{{ _("Description") }}</label>
+                        <textarea class="form-control" id="workflow-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="is-default">
+                            <label class="form-check-label" for="is-default">
+                                {{ _("Set as Default Workflow") }}
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Cancel") }}</button>
+                <button type="button" class="btn btn-primary" id="save-workflow">{{ _("Save Workflow") }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Workflow Action Modal -->
+<div class="modal fade" id="workflow-action" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _("Execute Workflow Action") }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="workflow-action-form">
+                    <div class="form-group">
+                        <label for="action-comment">{{ _("Comment") }}</label>
+                        <textarea class="form-control" id="action-comment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Cancel") }}</button>
+                <button type="button" class="btn btn-primary" id="execute-action">{{ _("Execute") }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+frappe.ready(function() {
+    load_workflow_statistics();
+    load_pending_actions();
+    load_recent_activity();
+    load_document_types();
+
+    // Save workflow button click
+    $('#save-workflow').on('click', function() {
+        const workflow_name = $('#workflow-name').val();
+        const document_type = $('#document-type').val();
+        const description = $('#workflow-description').val();
+        const is_default = $('#is-default').is(':checked');
+
+        frappe.call({
+            method: 'pwp_project.api.workflow.create_workflow_definition',
+            args: {
+                workflow_name: workflow_name,
+                document_type: document_type,
+                description: description,
+                is_default: is_default
+            },
+            callback: function(r) {
+                if (r.message) {
+                    frappe.show_alert({ message: __('Workflow created successfully'), indicator: 'green' });
+                    $('#new-workflow').modal('hide');
+                    $('#new-workflow-form')[0].reset();
+                    load_workflow_statistics();
+                }
+            }
+        });
+    });
+
+    // Execute action button click
+    $('#execute-action').on('click', function() {
+        const workflow_instance = $('#workflow-action').data('workflow-instance');
+        const action_name = $('#workflow-action').data('action-name');
+        const comment = $('#action-comment').val();
+
+        frappe.call({
+            method: 'pwp_project.api.workflow.execute_workflow_action_api',
+            args: {
+                workflow_instance: workflow_instance,
+                action_name: action_name,
+                comment: comment
+            },
+            callback: function(r) {
+                if (r.message) {
+                    frappe.show_alert({ message: __('Action executed successfully'), indicator: 'green' });
+                    $('#workflow-action').modal('hide');
+                    $('#workflow-action-form')[0].reset();
+                    load_pending_actions();
+                    load_workflow_statistics();
+                }
+            }
+        });
+    });
+});
+
+function load_workflow_statistics() {
+    frappe.call({
+        method: 'pwp_project.api.workflow.get_workflow_statistics',
+        callback: function(r) {
+            if (r.message) {
+                $('#total-workflows').text(r.message.total_workflows);
+                $('#pending-actions').text(r.message.pending_instances);
+                $('#in-progress').text(r.message.in_progress_instances);
+                $('#completed').text(r.message.completed_instances);
+            }
+        }
+    });
+}
+
+function load_pending_actions() {
+    frappe.call({
+        method: 'pwp_project.api.workflow.get_user_pending_actions',
+        callback: function(r) {
+            if (r.message) {
+                const tbody = $('#pending-actions-table tbody');
+                tbody.empty();
+
+                if (r.message.length === 0) {
+                    tbody.append('<tr><td colspan="5" class="text-center">' + __('No pending actions') + '</td></tr>');
+                    return;
+                }
+
+                r.message.forEach(function(action) {
+                    const actions_html = action.actions.map(function(act) {
+                        return `<button class="btn btn-sm btn-primary" onclick="show_action_modal('${action.workflow_instance}', '${act}')">${act}</button>`;
+                    }).join(' ');
+
+                    tbody.append(`
+                        <tr>
+                            <td><a href="/app/document/${action.document}">${action.document}</a></td>
+                            <td>${action.workflow_definition}</td>
+                            <td>${action.current_step}</td>
+                            <td>${actions_html}</td>
+                            <td>${format_date(action.due_date)}</td>
+                        </tr>
+                    `);
+                });
+            }
+        }
+    });
+}
+
+function load_recent_activity() {
+    // This would typically load recent workflow activity
+    // For now, we'll just show a placeholder
+    $('#recent-activity').html('<p class="text-muted">' + __('No recent activity') + '</p>');
+}
+
+function load_document_types() {
+    frappe.call({
+        method: 'frappe.client.get_list',
+        args: {
+            doctype: 'Document Type',
+            fields: ['name'],
+            order_by: 'name'
+        },
+        callback: function(r) {
+            if (r.message) {
+                const select = $('#document-type');
+                r.message.forEach(function(doc_type) {
+                    select.append(`<option value="${doc_type.name}">${doc_type.name}</option>`);
+                });
+            }
+        }
+    });
+}
+
+function show_action_modal(workflow_instance, action_name) {
+    $('#workflow-action').data('workflow-instance', workflow_instance);
+    $('#workflow-action').data('action-name', action_name);
+    $('#workflow-action').modal('show');
+}
+
+function format_date(date_string) {
+    if (!date_string) return '';
+    const date = new Date(date_string);
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+}
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+.workflow-dashboard {
+    padding: 20px 0;
+}
+
+.workflow-stats {
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3273dc;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.activity-feed {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.activity-feed .activity-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-feed .activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-feed .activity-time {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.btn-sm {
+    margin-right: 5px;
+}
+</style>
+{% endblock %}

@@ -1,6 +1,6 @@
-# Contributing to Electronic Office System
+# Contributing to PWP Project System
 
-Thank you for your interest in contributing to the Electronic Office System! This document provides guidelines and instructions for contributors.
+Thank you for your interest in contributing to the PWP Project System! This document provides guidelines and instructions for contributors.
 
 ## Code of Conduct
 
@@ -10,7 +10,7 @@ This project and everyone participating in it is governed by the [Code of Conduc
 
 ### Reporting Bugs
 
-If you find a bug in the Electronic Office System, please report it by creating an issue in our issue tracker. When reporting a bug, please include:
+If you find a bug in the PWP Project System, please report it by creating an issue in our issue tracker. When reporting a bug, please include:
 
 - A clear and descriptive title
 - A detailed description of the problem
@@ -34,8 +34,8 @@ We welcome suggestions for new features and improvements. Please create an issue
 To set up your development environment:
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/electronic_office.git`
-3. Navigate to the project directory: `cd electronic_office`
+2. Clone your fork: `git clone https://github.com/your-username/pwp_project.git`
+3. Navigate to the project directory: `cd pwp_project`
 4. Create a virtual environment: `python -m venv venv`
 5. Activate the virtual environment:
    - On Windows: `venv\Scripts\activate`
@@ -89,4 +89,4 @@ If you need help with contributing, please:
 - Search existing issues
 - Create a new issue with the "question" label
 
-Thank you for contributing to the Electronic Office System!
+Thank you for contributing to the PWP Project System!

@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-15 10:22:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "action_name",
+  "action_type",
+  "next_step",
+  "role",
+  "required_fields",
+  "conditions"
+ ],
+ "fields": [
+  {
+   "fieldname": "action_name",
+   "fieldtype": "Data",
+   "label": "Action Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "action_type",
+   "fieldtype": "Select",
+   "label": "Action Type",
+   "options": "Approval\nRejection\nForward\nRequest Changes\nSkip\nCustom",
+   "reqd": 1,
+   "default": "Approval"
+  },
+  {
+   "fieldname": "next_step",
+   "fieldtype": "Link",
+   "label": "Next Step",
+   "options": "Workflow Step",
+   "description": "Select the next step to transition to after this action"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "Role",
+   "options": "Role",
+   "description": "Required role to perform this action"
+  },
+  {
+   "fieldname": "required_fields",
+   "fieldtype": "Text",
+   "label": "Required Fields",
+   "description": "Comma-separated list of fields that must be filled before this action can be performed"
+  },
+  {
+   "fieldname": "conditions",
+   "fieldtype": "Table",
+   "label": "Conditions",
+   "options": "Workflow Action Condition"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-15 10:22:00.000000",
+ "modified_by": "Administrator",
+ "module": "PWP Project",
+ "name": "Workflow Step Action",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "action_name",
+ "istable": 1
+}

@@ -3,7 +3,7 @@ from frappe import _
 from frappe.model.document import Document
 import json
 from datetime import datetime, timedelta
-from electronic_office.electronic_office.workflow import WorkflowRouting, WorkflowStateMachine, WorkflowState, WorkflowActions, WorkflowNotifications
+from pwp_project.pwp_project.workflow import WorkflowRouting, WorkflowStateMachine, WorkflowState, WorkflowActions, WorkflowNotifications
 
 @frappe.whitelist()
 def start_workflow(document_name, workflow_definition=None):
@@ -13,18 +13,18 @@ def start_workflow(document_name, workflow_definition=None):
     if not workflow_definition:
         document = frappe.get_doc("Document", document_name)
         workflow_definition = frappe.db.get_value("Document Type", document.document_type, "workflow")
-    
+
     if not workflow_definition:
         frappe.throw(_("No workflow definition found for document {0}").format(document_name))
-    
+
     existing_workflow = frappe.db.exists("Workflow Instance", {
         "document": document_name,
         "status": ["in", ["Pending", "In Progress", "On Hold"]]
     })
-    
+
     if existing_workflow:
         frappe.throw(_("Workflow already exists for document {0}").format(document_name))
-    
+
     workflow_instance = frappe.new_doc("Workflow Instance")
     workflow_instance.document = document_name
     workflow_instance.workflow_definition = workflow_definition
@@ -34,10 +34,10 @@ def start_workflow(document_name, workflow_definition=None):
     workflow_instance.current_step = 1
     workflow_instance.save()
     workflow_instance.submit()
-    
+
     # Notify workflow started
     WorkflowNotifications.notify_workflow_started(workflow_instance)
-    
+
     return workflow_instance.name
 
 @frappe.whitelist()
@@ -46,13 +46,13 @@ def execute_workflow_action(workflow_instance, action_name, comment=None, to_ste
     Execute a workflow action
     """
     wf_instance = frappe.get_doc("Workflow Instance", workflow_instance)
-    
+
     # Execute the action
     status = WorkflowActions.execute_action(wf_instance, action_name, frappe.session.user, comment, to_step)
-    
+
     # Notify workflow action
     WorkflowNotifications.notify_workflow_action(wf_instance, action_name, frappe.session.user, comment)
-    
+
     return status
 
 @frappe.whitelist()
@@ -64,7 +64,7 @@ def get_workflow_status(document_name):
         "document": document_name,
         "status": ["in", ["Pending", "In Progress", "On Hold"]]
     }, ["name", "status", "current_step", "workflow_definition"])
-    
+
     if workflow_instance:
         return {
             "workflow_instance": workflow_instance[0],
@@ -72,7 +72,7 @@ def get_workflow_status(document_name):
             "current_step": workflow_instance[2],
             "workflow_definition": workflow_instance[3]
         }
-    
+
     return None
 
 @frappe.whitelist()
@@ -82,17 +82,17 @@ def get_pending_actions(user=None):
     """
     if not user:
         user = frappe.session.user
-    
+
     pending_actions = []
-    
+
     workflow_instances = frappe.get_all("Workflow Instance", {
         "status": "In Progress"
     }, ["name", "document", "workflow_definition", "current_step"])
-    
+
     for wf_instance in workflow_instances:
         instance = frappe.get_doc("Workflow Instance", wf_instance.name)
         actions = WorkflowActions.get_available_actions(instance, user)
-        
+
         if actions:
             pending_actions.append({
                 "workflow_instance": wf_instance.name,
@@ -101,7 +101,7 @@ def get_pending_actions(user=None):
                 "current_step": wf_instance.current_step,
                 "actions": actions
             })
-    
+
     return pending_actions
 
 @frappe.whitelist()
@@ -111,9 +111,9 @@ def get_workflow_instance_details(workflow_instance_name):
     """
     workflow_instance = frappe.get_doc("Workflow Instance", workflow_instance_name)
     workflow_definition = frappe.get_doc("Workflow Definition", workflow_instance.workflow_definition)
-    
+
     current_step = workflow_definition.get_step_by_order(workflow_instance.current_step)
-    
+
     result = {
         "workflow_instance": workflow_instance.as_dict(),
         "workflow_definition": workflow_definition.as_dict(),
@@ -121,19 +121,19 @@ def get_workflow_instance_details(workflow_instance_name):
         "pending_actions": [],
         "history": []
     }
-    
+
     # Get pending actions for current user
     if workflow_instance.status == "In Progress" and current_step:
         actions = WorkflowActions.get_available_actions(workflow_instance, frappe.session.user)
         result["pending_actions"] = actions
-    
+
     # Get workflow history
     history = workflow_instance.history or "[]"
     try:
         result["history"] = json.loads(history)
     except:
         result["history"] = []
-    
+
     return result
 
 @frappe.whitelist()
@@ -144,7 +144,7 @@ def get_workflow_definitions(doctype=None):
     filters = {"is_active": 1}
     if doctype:
         filters["document_type"] = doctype
-    
+
     return frappe.get_all("Workflow Definition", filters=filters, fields=["name", "workflow_name", "document_type"])
 
 @frappe.whitelist()
@@ -176,7 +176,7 @@ def get_workflow_path(workflow_instance_name):
     """
     workflow_instance = frappe.get_doc("Workflow Instance", workflow_instance_name)
     path = WorkflowRouting.get_workflow_path(workflow_instance)
-    
+
     return [step.as_dict() for step in path]
 
 @frappe.whitelist()
@@ -242,7 +242,7 @@ def duplicate_workflow(workflow_definition_name):
     Duplicate a workflow definition
     """
     workflow_definition = frappe.get_doc("Workflow Definition", workflow_definition_name)
-    
+
     # Create a new workflow definition
     new_workflow = frappe.new_doc("Workflow Definition")
     new_workflow.workflow_name = f"{workflow_definition.workflow_name} (Copy)"
@@ -256,7 +256,7 @@ def duplicate_workflow(workflow_definition_name):
     new_workflow.escalation_days = workflow_definition.escalation_days
     new_workflow.notify_on_timeout = workflow_definition.notify_on_timeout
     new_workflow.notify_on_escalation = workflow_definition.notify_on_escalation
-    
+
     # Copy steps
     for step in workflow_definition.steps:
         new_step = new_workflow.append('steps', {})
@@ -273,7 +273,7 @@ def duplicate_workflow(workflow_definition_name):
         new_step.allow_skip = step.allow_skip
         new_step.allow_reject = step.allow_reject
         new_step.custom_script = step.custom_script
-        
+
         # Copy actions
         for action in step.actions:
             new_action = new_step.append('actions', {})
@@ -282,7 +282,7 @@ def duplicate_workflow(workflow_definition_name):
             new_action.role = action.role
             new_action.next_step = action.next_step
             new_action.custom_script = action.custom_script
-        
+
         # Copy conditions
         for condition in step.conditions:
             new_condition = new_step.append('conditions', {})
@@ -292,15 +292,15 @@ def duplicate_workflow(workflow_definition_name):
             new_condition.operator = condition.operator
             new_condition.value = condition.value
             new_condition.logical_operator = condition.logical_operator
-    
+
     # Copy permissions
     for permission in workflow_definition.permissions:
         new_permission = new_workflow.append('permissions', {})
         new_permission.role = permission.role
         new_permission.permission_level = permission.permission_level
-    
+
     new_workflow.save()
-    
+
     return new_workflow.name
 
 @frappe.whitelist()
@@ -311,7 +311,7 @@ def activate_workflow(workflow_definition_name):
     workflow_definition = frappe.get_doc("Workflow Definition", workflow_definition_name)
     workflow_definition.is_active = 1
     workflow_definition.save()
-    
+
     return True
 
 @frappe.whitelist()
@@ -322,7 +322,7 @@ def deactivate_workflow(workflow_definition_name):
     workflow_definition = frappe.get_doc("Workflow Definition", workflow_definition_name)
     workflow_definition.is_active = 0
     workflow_definition.save()
-    
+
     return True
 
 @frappe.whitelist()
@@ -332,16 +332,16 @@ def get_assignee_options(doctype):
     """
     # Get document fields
     document_fields = frappe.get_meta(doctype).get("fields")
-    
+
     # Filter for user and role fields
     user_fields = [field for field in document_fields if field.fieldtype in ["Link", "Select"] and field.options in ["User", "Role"]]
-    
+
     # Get all roles
     roles = frappe.get_all("Role", {"disabled": 0}, ["name"])
-    
+
     # Get all users
     users = frappe.get_all("User", {"enabled": 1}, ["name", "full_name"])
-    
+
     return {
         "fields": [{"label": field.label, "value": field.fieldname} for field in user_fields],
         "roles": [{"label": role.name, "value": role.name} for role in roles],
@@ -354,10 +354,10 @@ def get_document_fields(doctype):
     Get fields for a document type
     """
     document_fields = frappe.get_meta(doctype).get("fields")
-    
+
     # Filter for relevant field types
     relevant_fields = [field for field in document_fields if field.fieldtype in [
         "Data", "Link", "Select", "Check", "Date", "Datetime", "Time", "Int", "Float", "Percent", "Currency"
     ]]
-    
+
     return [{"label": field.label, "value": field.fieldname, "type": field.fieldtype} for field in relevant_fields]

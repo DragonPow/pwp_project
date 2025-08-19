@@ -1,7 +1,7 @@
-app_name = "electronic_office"
-app_title = "Electronic Office System"
+app_name = "pwp_project"
+app_title = "PWP Project System"
 app_publisher = "Government Agency"
-app_description = "Electronic Office System for government agencies"
+app_description = "PWP Project System for government agencies"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "info@government.gov"
@@ -12,8 +12,8 @@ app_version = "0.0.1"
 # ------------------
 # include_js, include_css, include_less, include_scss
 
-# include_js = ["electronic_office.bundle.js"]
-# include_css = ["electronic_office.bundle.css"]
+# include_js = ["pwp_project.bundle.js"]
+# include_css = ["pwp_project.bundle.css"]
 
 # Home Pages
 # ----------
@@ -42,29 +42,29 @@ permissions = [
 
 # Installation
 # ------------
-before_install = "electronic_office.install.before_install"
-after_install = "electronic_office.install.after_install"
+before_install = "pwp_project.install.before_install"
+after_install = "pwp_project.install.after_install"
 
 # Uninstallation
 # --------------
-before_uninstall = "electronic_office.uninstall.before_uninstall"
-after_uninstall = "electronic_office.uninstall.after_uninstall"
+before_uninstall = "pwp_project.uninstall.before_uninstall"
+after_uninstall = "pwp_project.uninstall.after_uninstall"
 
 # Desk Notifications
 # ------------------
 # desk_notifications = {
-# 	"all": ["electronic_office.notifications.get_notifications"],
+# 	"all": ["pwp_project.notifications.get_notifications"],
 # 	"for_doctype": {
-# 		"ToDo": "electronic_office.notifications.get_todo_notifications"
+# 		"ToDo": "pwp_project.notifications.get_todo_notifications"
 # 	}
 # }
 
 # Email Notifications
 # -------------------
 # email_notifications = {
-# 	"all": ["electronic_office.email.notifications.get_notifications"],
+# 	"all": ["pwp_project.email.notifications.get_notifications"],
 # 	"for_doctype": {
-# 		"ToDo": "electronic_office.email.notifications.get_todo_notifications"
+# 		"ToDo": "pwp_project.email.notifications.get_todo_notifications"
 # 	}
 # }
 
@@ -72,14 +72,14 @@ after_uninstall = "electronic_office.uninstall.after_uninstall"
 # ---------------
 doc_events = {
 	"Document": {
-		"on_update": "electronic_office.document.events.on_update",
-		"on_submit": "electronic_office.document.events.on_submit",
-		"on_cancel": "electronic_office.document.events.on_cancel"
+		"on_update": "pwp_project.document.events.on_update",
+		"on_submit": "pwp_project.document.events.on_submit",
+		"on_cancel": "pwp_project.document.events.on_cancel"
 	},
 	"Workflow Instance": {
-		"on_update": "electronic_office.workflow.events.on_update",
-		"on_submit": "electronic_office.workflow.events.on_submit",
-		"on_cancel": "electronic_office.workflow.events.on_cancel"
+		"on_update": "pwp_project.workflow.events.on_update",
+		"on_submit": "pwp_project.workflow.events.on_submit",
+		"on_cancel": "pwp_project.workflow.events.on_cancel"
 	}
 }
 
@@ -87,37 +87,37 @@ doc_events = {
 # ---------------
 # scheduler_events = {
 # 	"all": [
-# 		"electronic_office.tasks.all"
+# 		"pwp_project.tasks.all"
 # 	],
 # 	"daily": [
-# 		"electronic_office.tasks.daily"
+# 		"pwp_project.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"electronic_office.tasks.hourly"
+# 		"pwp_project.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"electronic_office.tasks.weekly"
+# 		"pwp_project.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"electronic_office.tasks.monthly"
+# 		"pwp_project.tasks.monthly"
 # 	]
 # }
 
 # Testing
 # -------
-# before_tests = "electronic_office.install.before_tests"
-# after_tests = "electronic_office.install.after_tests"
+# before_tests = "pwp_project.install.before_tests"
+# after_tests = "pwp_project.install.after_tests"
 
 # Integration Requests
 # -------------------
 # integration_request_service_map = {
-# 	"Service 1": "electronic_office.integrations.service_1",
-# 	"Service 2": "electronic_office.integrations.service_2"
+# 	"Service 1": "pwp_project.integrations.service_1",
+# 	"Service 2": "pwp_project.integrations.service_2"
 # }
 
 # Standard Portal Items
 # ---------------------
-# standard_portal_items = ["electronic_office.portal.items"]
+# standard_portal_items = ["pwp_project.portal.items"]
 
 # Portal Menu Items
 # -----------------
@@ -132,7 +132,7 @@ doc_events = {
 
 # Point of Sale
 # -------------
-# pos_bundles = ["electronic_office.pos.bundle"]
+# pos_bundles = ["pwp_project.pos.bundle"]
 
 # Prerequisites
 # -------------

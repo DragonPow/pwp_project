@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-18 01:36:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "from_step",
+  "to_step",
+  "transition_condition",
+  "transition_action",
+  "auto_transition",
+  "notify_on_transition",
+  "custom_script"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_step",
+   "fieldtype": "Link",
+   "label": "From Step",
+   "options": "Workflow Step",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_step",
+   "fieldtype": "Link",
+   "label": "To Step",
+   "options": "Workflow Step",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transition_condition",
+   "fieldtype": "Table",
+   "label": "Transition Condition",
+   "options": "Workflow Condition"
+  },
+  {
+   "fieldname": "transition_action",
+   "fieldtype": "Link",
+   "label": "Transition Action",
+   "options": "Workflow Step Action"
+  },
+  {
+   "fieldname": "auto_transition",
+   "fieldtype": "Check",
+   "label": "Auto Transition",
+   "default": 0,
+   "description": "Automatically transition when conditions are met"
+  },
+  {
+   "fieldname": "notify_on_transition",
+   "fieldtype": "Check",
+   "label": "Notify on Transition",
+   "default": 1
+  },
+  {
+   "fieldname": "custom_script",
+   "fieldtype": "Code",
+   "label": "Custom Script",
+   "options": "Python",
+   "description": "Custom script to execute during transition"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-18 01:36:00.000000",
+ "modified_by": "Administrator",
+ "module": "PWP Project",
+ "name": "Workflow Transition",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "from_step",
+ "istable": 1
+}

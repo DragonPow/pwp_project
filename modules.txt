@@ -1,4 +1,4 @@
-# Modules for Electronic Office System
+# Modules for PWP Project System
 # Format: Module Name
 
 # Core Modules

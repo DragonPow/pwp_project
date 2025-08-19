@@ -5,7 +5,7 @@ with open('config.json') as f:
     config = json.load(f)
 
 setup(
-    name=config.get('app_name', 'electronic_office'),
+    name=config.get('app_name', 'pwp_project'),
     version=config.get('app_version', '0.0.1'),
     description=config.get('app_description', ''),
     author=config.get('app_author', ''),

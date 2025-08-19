@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-18 01:36:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "condition_name",
+  "description",
+  "condition_type",
+  "field_name",
+  "operator",
+  "value",
+  "role",
+  "document_type",
+  "logical_operator"
+ ],
+ "fields": [
+  {
+   "fieldname": "condition_name",
+   "fieldtype": "Data",
+   "label": "Condition Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "condition_type",
+   "fieldtype": "Select",
+   "label": "Condition Type",
+   "options": "Field-based\nRole-based\nDocument-based\nCustom",
+   "reqd": 1,
+   "default": "Field-based"
+  },
+  {
+   "fieldname": "field_name",
+   "fieldtype": "Data",
+   "label": "Field Name",
+   "depends_on": "eval:doc.condition_type === 'Field-based'"
+  },
+  {
+   "fieldname": "operator",
+   "fieldtype": "Select",
+   "label": "Operator",
+   "options": "equals\nnot equals\ngreater than\nless than\ngreater than or equal\nless than or equal\ncontains\nnot contains\nin\nnot in",
+   "depends_on": "eval:doc.condition_type === 'Field-based'",
+   "reqd": 1
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "label": "Value",
+   "depends_on": "eval:doc.condition_type === 'Field-based'",
+   "reqd": 1
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "Role",
+   "options": "Role",
+   "depends_on": "eval:doc.condition_type === 'Role-based'",
+   "reqd": 1
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "options": "Document Type",
+   "depends_on": "eval:doc.condition_type === 'Document-based'",
+   "reqd": 1
+  },
+  {
+   "fieldname": "logical_operator",
+   "fieldtype": "Select",
+   "label": "Logical Operator",
+   "options": "AND\nOR",
+   "default": "AND"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-18 01:36:00.000000",
+ "modified_by": "Administrator",
+ "module": "PWP Project",
+ "name": "Workflow Step Condition",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "condition_name",
+ "istable": 1
+}
