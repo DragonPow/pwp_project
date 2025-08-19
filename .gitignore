@@ -1,13 +1,87 @@
-*.pyc
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# VSCode & PyCharm
+.vscode/
+.idea/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Vim/Emacs swap files
 *.swp
 *.swo
 *~
-.vscode
-.idea/
+
+# Node.js
 node_modules/
-dist/
-*.egg-info
-*.egg
-build/
+
+# Frappe/ERPNext specific
+sites/
+*.db
+*.sql
+*.sqlite
+*.mariadb
+*.log
+
+# Static assets
+public/files/
+public/backups/
+private/files/
+private/backups/
+
+# Bench/patches
+patches.txt
+
+# Ignore envs
+.env
+.env.*
+
+# Ignore test output
+test_output/
