@@ -1,3 +1,4 @@
+name = "pwp_project"
 from setuptools import setup, find_packages
 import json
 
